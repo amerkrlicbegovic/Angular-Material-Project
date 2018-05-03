@@ -4,9 +4,9 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { FlexboxComponent } from './flexbox/flexbox.component';
 
 const routes: Routes = [
-  {path: 'buttons', component: ButtonsComponent},
-  {path: 'flexbox', component: FlexboxComponent},
-  {path: '**', redirectTo: 'buttons'}
+  { path: 'buttons', component: ButtonsComponent },
+  { path: 'flexbox', component: FlexboxComponent },
+  { path: '**', redirectTo: 'buttons' }
 ];
 
 @NgModule({
