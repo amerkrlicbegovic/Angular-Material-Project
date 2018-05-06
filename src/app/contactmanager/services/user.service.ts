@@ -3,16 +3,16 @@ import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
-import { reject } from 'q';
+import { resolve } from 'q';
 
 @Injectable()
 export class UserService {
 
   private _users: BehaviorSubject<User[]>;
-
+  
   private dataStore: {
     users: User[]
-  };
+  }
 
   constructor(private http: HttpClient) {
     this.dataStore = { users: [] };
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   userById(id: number) {
-    return this.dataStore.users.find(x => x.id === id);
+    return this.dataStore.users.find(x => x.id == id);
   }
 
   loadAll() {
@@ -44,7 +44,7 @@ export class UserService {
         this.dataStore.users = data;
         this._users.next(Object.assign({}, this.dataStore).users);
       }, error => {
-        console.log('Failed to fetch users');
+        console.log("Failed to fetch users");
       });
   }
 

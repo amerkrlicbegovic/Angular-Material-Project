@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { User } from '../../models/user';
-import { Validators, FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -12,11 +12,13 @@ import { UserService } from '../../services/user.service';
 export class NewContactDialogComponent implements OnInit {
 
   avatars = [
-    'svg-1', 'svg-2', 'svg-3', 'svg-4',
+    'svg-1', 'svg-2', 'svg-3', 'svg-4'
   ];
-  user: User;
 
-  constructor(private dialogRef: MatDialogRef<NewContactDialogComponent>, private userService: UserService ) { }
+  user: User;
+  constructor(
+    private dialogRef: MatDialogRef<NewContactDialogComponent>,
+    private userService: UserService) { }
 
   name = new FormControl('', [Validators.required]);
 
@@ -29,8 +31,8 @@ export class NewContactDialogComponent implements OnInit {
   }
 
   save() {
-    this.userService.addUser(this.user).then(user=>{
-      this.dialogRef.close(this.user);
+    this.userService.addUser(this.user).then(user => {
+      this.dialogRef.close(user);
     });
   }
 

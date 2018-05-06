@@ -16,11 +16,13 @@ import { NotesComponent } from './components/notes/notes.component';
 import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
 const routes: Routes = [
-  { path: '', component: ContactmanagerAppComponent,
+  {
+    path: '', component: ContactmanagerAppComponent,
     children: [
       { path: ':id', component: MainContentComponent },
       { path: '', component: MainContentComponent }
-    ] },
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];
 
@@ -37,14 +39,16 @@ const routes: Routes = [
   providers: [
     UserService
   ],
-  declarations: [ContactmanagerAppComponent,
-    ToolbarComponent,
-    MainContentComponent,
-    SidenavComponent,
-    NotesComponent,
-    NewContactDialogComponent],
-    entryComponents: [
-      NewContactDialogComponent
-    ]
+  declarations: [
+    ContactmanagerAppComponent, 
+    ToolbarComponent, 
+    MainContentComponent, 
+    SidenavComponent, 
+    NotesComponent, 
+    NewContactDialogComponent
+  ], 
+  entryComponents: [
+    NewContactDialogComponent
+  ]
 })
 export class ContactmanagerModule { }
