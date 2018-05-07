@@ -11,9 +11,10 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
   @Output() toggleSidenav = new EventEmitter<void>();
+  @Output() toggleTheme = new EventEmitter<void>();
 
   constructor(
-    private dialog: MatDialog, 
+    private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router) { }
 
@@ -21,6 +22,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   openAddContactDialog(): void {
+    // tslint:disable-next-line:prefer-const
     let dialogRef = this.dialog.open(NewContactDialogComponent, {
       width: '450px'
     });
@@ -29,7 +31,7 @@ export class ToolbarComponent implements OnInit {
       console.log('The dialog was closed', result);
 
       if (result) {
-        this.openSnackBar("Contact added", "Navigate")
+        this.openSnackBar('Contact added', 'Navigate')
           .onAction().subscribe(() => {
             this.router.navigate(['/contactmanager', result.id]);
           });
@@ -37,7 +39,7 @@ export class ToolbarComponent implements OnInit {
     });
   }
 
-  openSnackBar(message: string, action: string) : MatSnackBarRef<SimpleSnackBar> {
+  openSnackBar(message: string, action: string): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 5000,
     });
